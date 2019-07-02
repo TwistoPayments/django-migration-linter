@@ -43,11 +43,12 @@ Add the migration linter your ``INSTALLED_APPS``:
     ]
 
 
-``python manage.py lintmigrations [GIT_COMMIT_ID] [--ignore-name-contains IGNORE_NAME_CONTAINS] [--include-apps INCLUDE_APPS [INCLUDE_APPS ...] | --exclude-apps EXCLUDE_APPS [EXCLUDE_APPS ...]]``
+``python manage.py lintmigrations [GIT_COMMIT_ID] [--ignore-name-contains IGNORE_NAME_CONTAINS] [--include-apps INCLUDE_APPS [INCLUDE_APPS ...] | --exclude-apps EXCLUDE_APPS [EXCLUDE_APPS ...]] [--project-root-path DJANGO_PROJECT_FOLDER]``
 
 ================================================== ===========================================================================================================================
                    Parameter                                                                            Description
 ================================================== ===========================================================================================================================
+``DJANGO_PROJECT_FOLDER``                          An absolute or relative path to the django project.
 ``GIT_COMMIT_ID``                                  If specified, only migrations since this commit will be taken into account. If not specified, all migrations will be linted.
 ``--ignore-name-contains IGNORE_NAME_CONTAINS``    Ignore migrations containing this name.
 ``--ignore-name IGNORE_NAME [IGNORE_NAME ...]``    Ignore migrations with exactly one of these names.
@@ -59,6 +60,7 @@ Add the migration linter your ``INSTALLED_APPS``:
 ``--no-cache``                                     Don't use a cache.
 ``--applied-migrations``                           Only lint migrations that are applied to the selected database. Other migrations are ignored.
 ``--unapplied-migrations``                         Only lint migrations that are not yet applied to the selected database. Other migrations are ignored.
+``--project-root-path DJANGO_PROJECT_FOLDER``      An absolute or relative path to the django project.
 ================================================== ===========================================================================================================================
 
 Examples
