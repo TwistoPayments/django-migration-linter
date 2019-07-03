@@ -14,6 +14,7 @@
 
 import re
 import logging
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -59,8 +60,8 @@ migration_tests = (
     },
     {
         "code": "ALTER_COLUMN",
-        "fn": lambda sql, **kw: re.search("ALTER TABLE .* MODIFY", sql),
-        # or re.search("ALTER TABLE .* ALTER COLUMN .* TYPE", sql),
+        "fn": lambda sql, **kw: re.search("ALTER TABLE .* MODIFY", sql)
+        or re.search("ALTER TABLE .* ALTER COLUMN .* TYPE", sql),
         "err_msg": (
             "ALTERING columns (Could be backward compatible. "
             "You may ignore this migration.)"
@@ -70,11 +71,12 @@ migration_tests = (
 )
 
 
-def analyse_sql_statements(sql_statements):
+def analyse_sql_statements(sql_statements, exclude_tests):
     errors = []
+    print(exclude_tests)
     for statement in sql_statements:
         for test in migration_tests:
-            if test["fn"](statement, errors=errors):
+            if test["code"] not in exclude_tests and test["fn"](statement, errors=errors):
                 logger.debug("Testing {0} -- ERROR".format(statement))
                 table_search = re.search("TABLE `([^`]*)`", statement, re.IGNORECASE)
                 col_search = re.search("COLUMN `([^`]*)`", statement, re.IGNORECASE)
