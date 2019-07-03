@@ -72,7 +72,6 @@ migration_tests = (
 
 def analyse_sql_statements(sql_statements, exclude_tests):
     errors = []
-    print(exclude_tests)
     for statement in sql_statements:
         for test in migration_tests:
             if test["code"] not in exclude_tests and test["fn"](statement, errors=errors):
