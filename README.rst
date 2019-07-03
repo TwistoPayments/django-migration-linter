@@ -43,7 +43,7 @@ Add the migration linter your ``INSTALLED_APPS``:
     ]
 
 
-``python manage.py lintmigrations [GIT_COMMIT_ID] [--ignore-name-contains IGNORE_NAME_CONTAINS] [--include-apps INCLUDE_APPS [INCLUDE_APPS ...] | --exclude-apps EXCLUDE_APPS [EXCLUDE_APPS ...]] [--project-root-path DJANGO_PROJECT_FOLDER]``
+``python manage.py lintmigrations [GIT_COMMIT_ID] [--ignore-name-contains IGNORE_NAME_CONTAINS] [--include-apps INCLUDE_APPS [INCLUDE_APPS ...] | --exclude-apps EXCLUDE_APPS [EXCLUDE_APPS ...]] [--exclude-tests EXCLUDE_TESTS [EXCLUDE TESTS ...]] [--project-root-path DJANGO_PROJECT_FOLDER]``
 
 ================================================== ===========================================================================================================================
                    Parameter                                                                            Description
@@ -54,6 +54,7 @@ Add the migration linter your ``INSTALLED_APPS``:
 ``--ignore-name IGNORE_NAME [IGNORE_NAME ...]``    Ignore migrations with exactly one of these names.
 ``--include-apps INCLUDE_APPS [INCLUDE_APPS ...]`` Check only migrations that are in the specified django apps.
 ``--exclude-apps EXCLUDE_APPS [EXCLUDE_APPS ...]`` Ignore migrations that are in the specified django apps.
+``--exclude-tests EXCLUDE_TESTS [EXCLUDE TES...]`` Specify tests to be ignored during analyze.
 ``--verbose or -v``                                Print more information during execution.
 ``--database DATABASE``                            Specify the database for which to generate the SQL. Defaults to *default*.
 ``--cache-path PATH``                              specify a directory that should be used to store cache-files in.
@@ -99,7 +100,6 @@ You can also ignore migrations by adding this to your migrations:
             # ...
         ]
     # ...
-
 
 Cache
 -----
