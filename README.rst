@@ -111,6 +111,7 @@ You can also ignore tests by adding this option during execution:
 The tests list can be found in sql_analyzer (migration_tests):
 
 .. code-block::
+
     migration_tests = (
         {
             "code": "NOT_NULL",
